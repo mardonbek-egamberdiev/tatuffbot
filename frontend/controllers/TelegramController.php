@@ -127,51 +127,51 @@ class TelegramController extends Controller
             $this->user->save();
         }
         if (isset($message['text']) && $message['text'] == 'Yuborish') {
-            $channelResult = $this->bot('GetChatMember', [
-                'chat_id' => -1002137986505,
-                'user_id' => $this->user->user_id,
-            ])->result->status;
-            if ($channelResult != 'left') {
-                if ($this->user->file != '') {
-                    $message_text =
-                        "👤 " . $this->user->full_name . "\n" .
-                        "📍 " . $this->getUserData('address') . "\n" .
-                        "📞 " . $this->getUserData('phone') . "\n" .
-                        "🏛 " . $this->getUserData('get_teach') . "\n" .
-                        "🔖 Sertifikat: bor";
-                    $send = $this->bot('sendPhoto', [
-                        'chat_id' => 672765105,
-                        'photo' => 'https://' . Yii::$app->request->hostName . '/file/' . $this->user->file,
-                        'caption' => $message_text,
-                        'parse_mode' => 'html'
-                    ]);
-                    $file = $this->user->file;
-                    $savePath = "@frontend/web/payment/$file"; // Replace with the desired save path
-                    unlink(Yii::getAlias($savePath));
-                } else {
-                    $message_text =
-                        "👤 " . $this->user->full_name . "\n" .
-                        "📍 " . $this->getUserData('address') . "\n" .
-                        "📞 " . $this->getUserData('phone') . "\n" .
-                        "🏛 " . $this->getUserData('get_teach') . "\n" .
-                        "🔖 Sertifikat: yo'q";
-                    $this->bot('sendMessage', [
-                        'chat_id' => $this->user->user_id,
-                        'text' => $message_text,
-                        'parse_mode' => 'html'
-                    ]);
-//                Yii::$app->resellerBot->bot('answerCallbackQuery', [
-//                    'callback_query_id' => $callback_query['id'],
-//                    'text' => $alert_message,
-//                    'show_alert' => true,
-//                ]);
-                }
-            } else {
-                $this->bot('sendMessage', [
-                    'chat_id' => $this->user->user_id,
-                    'text' => 'Kalaga azo bo\'lmagansiz'
-                ]);
-            }
+//             $channelResult = $this->bot('GetChatMember', [
+//                 'chat_id' => -1002137986505,
+//                 'user_id' => $this->user->user_id,
+//             ])->result->status;
+//             if ($channelResult != 'left') {
+//                 if ($this->user->file != '') {
+//                     $message_text =
+//                         "👤 " . $this->user->full_name . "\n" .
+//                         "📍 " . $this->getUserData('address') . "\n" .
+//                         "📞 " . $this->getUserData('phone') . "\n" .
+//                         "🏛 " . $this->getUserData('get_teach') . "\n" .
+//                         "🔖 Sertifikat: bor";
+//                     $send = $this->bot('sendPhoto', [
+//                         'chat_id' => 672765105,
+//                         'photo' => 'https://' . Yii::$app->request->hostName . '/file/' . $this->user->file,
+//                         'caption' => $message_text,
+//                         'parse_mode' => 'html'
+//                     ]);
+//                     $file = $this->user->file;
+//                     $savePath = "@frontend/web/payment/$file"; // Replace with the desired save path
+//                     unlink(Yii::getAlias($savePath));
+//                 } else {
+//                     $message_text =
+//                         "👤 " . $this->user->full_name . "\n" .
+//                         "📍 " . $this->getUserData('address') . "\n" .
+//                         "📞 " . $this->getUserData('phone') . "\n" .
+//                         "🏛 " . $this->getUserData('get_teach') . "\n" .
+//                         "🔖 Sertifikat: yo'q";
+//                     $this->bot('sendMessage', [
+//                         'chat_id' => $this->user->user_id,
+//                         'text' => $message_text,
+//                         'parse_mode' => 'html'
+//                     ]);
+// //                Yii::$app->resellerBot->bot('answerCallbackQuery', [
+// //                    'callback_query_id' => $callback_query['id'],
+// //                    'text' => $alert_message,
+// //                    'show_alert' => true,
+// //                ]);
+//                 }
+//             } else {
+//                 $this->bot('sendMessage', [
+//                     'chat_id' => $this->user->user_id,
+//                     'text' => 'Kalaga azo bo\'lmagansiz'
+//                 ]);
+//             }
 
         }
 
@@ -522,7 +522,7 @@ class TelegramController extends Controller
         return $AllArray;
     }
 
-    public function bot($method, $data = [], $token = '6526966037:AAE4eR1ZbhvxX8QCXlsr8M8_T8WcrUW7UCQ')
+    public function bot($method, $data = [], $token = '7602376777:AAGNMzkCpUIN_i53XG2FZprjlFowh17qlh8')
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'https://api.telegram.org/bot' . $token . '/' . $method);
