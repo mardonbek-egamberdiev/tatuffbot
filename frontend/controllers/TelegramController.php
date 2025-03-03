@@ -33,7 +33,7 @@ class TelegramController extends Controller
 
         try {
 
-            $token = '6526966037:AAE4eR1ZbhvxX8QCXlsr8M8_T8WcrUW7UCQ';
+            $token = '7602376777:AAGNMzkCpUIN_i53XG2FZprjlFowh17qlh8';
             $data = json_decode(file_get_contents("php://input"), true);
             $message = $data['message'] ?? null;
             $from = $message['from'] ?? null;
